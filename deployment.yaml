@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab2-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lab2-container-app
+  template:
+    metadata:
+      labels:
+        app: lab2-container-app
+    spec:
+      containers:
+        - name: flask-container
+          image: lab2-container-app:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
